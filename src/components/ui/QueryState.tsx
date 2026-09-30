@@ -1,12 +1,17 @@
 import { vi } from "@/i18n/vi";
 import { Alert } from "./Alert";
-import { Button } from "./Button";
+import { Button, Spinner } from "./Button";
+import { Mascot } from "./Mascot";
 
 export function LoadingState({ label = vi.common.loading }: { label?: string }) {
   return (
-    <p role="status" className="py-10 text-center text-muted">
-      {label}
-    </p>
+    <div className="flex flex-col items-center gap-2 py-12">
+      <Mascot mood="thinking" size={104} />
+      <p role="status" className="flex items-center gap-2 font-display text-lg font-bold text-muted">
+        {label}
+        <Spinner className="text-brand" />
+      </p>
+    </div>
   );
 }
 
@@ -18,8 +23,11 @@ export function ErrorState({
   onRetry?: () => void;
 }) {
   return (
-    <div className="space-y-3 py-6">
-      <Alert tone="error">{message}</Alert>
+    <div className="flex flex-col items-center gap-4 py-6">
+      <Mascot mood="sad" size={96} />
+      <Alert tone="error" className="w-full">
+        {message}
+      </Alert>
       {onRetry ? (
         <Button variant="secondary" onClick={onRetry}>
           {vi.common.retry}

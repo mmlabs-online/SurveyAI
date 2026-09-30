@@ -1,0 +1,41 @@
+@import "tailwindcss";
+
+/* Palette: warm paper, deep green ink, one clay accent. All text pairs meet WCAG AA. */
+@theme {
+  --color-paper: #f6f1e6;
+  --color-card: #fffdf8;
+  --color-ink: #1c2822;
+  --color-muted: #4f5c55;
+  --color-line: #d8cfba;
+  --color-brand: #0d6552;
+  --color-brand-dark: #094a3c;
+  --color-brand-soft: #dcefe8;
+  --color-accent: #a83f1d;
+  --color-danger: #9c2418;
+  --color-danger-soft: #fbe6e2;
+  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, "Times New Roman", serif;
+}
+
+html {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  min-height: 100dvh;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-brand);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

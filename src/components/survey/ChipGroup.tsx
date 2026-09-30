@@ -18,10 +18,10 @@ export function ChipGroup<T extends string>({
   const labelId = useId();
   return (
     <div role="group" aria-labelledby={labelId} className="space-y-2">
-      <p id={labelId} className="text-sm font-semibold">
+      <p id={labelId} className="pl-1 font-display text-base font-bold">
         {label}
       </p>
-      <div className="flex flex-wrap gap-2">
+      <div className="flex flex-wrap gap-2.5">
         {options.map((option) => {
           const pressed = option.value === value;
           return (
@@ -31,12 +31,25 @@ export function ChipGroup<T extends string>({
               aria-pressed={pressed}
               onClick={() => onChange(pressed ? undefined : option.value)}
               className={cn(
-                "min-h-11 border px-3.5 py-2 text-sm font-medium transition-colors",
+                "inline-flex min-h-11 items-center gap-1.5 rounded-full border-2 px-4 py-2 text-base font-bold",
+                "transition-[transform,box-shadow,background-color] duration-150 ease-boing active:scale-95",
                 pressed
-                  ? "border-brand bg-brand text-white"
-                  : "border-ink/30 bg-card text-ink hover:bg-brand-soft",
+                  ? "-rotate-1 scale-105 border-ink bg-sun text-ink shadow-pop-sm"
+                  : "border-edge bg-card text-ink hover:-translate-y-0.5 hover:border-ink hover:bg-sun-soft",
               )}
             >
+              {pressed ? (
+                <svg viewBox="0 0 16 16" width={14} height={14} aria-hidden="true" className="animate-pop-in">
+                  <path
+                    d="M3 8.5l3.2 3L13 4.5"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth={2.6}
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              ) : null}
               {option.label}
             </button>
           );

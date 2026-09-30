@@ -1,6 +1,7 @@
 import { useId } from "react";
 import { vi } from "@/i18n/vi";
 import type { AnswerValue, PublicQuestion } from "@/lib/schema/survey";
+import { CONTROL } from "@/components/ui/Field";
 import { QuestionFrame } from "./QuestionFrame";
 
 export const OPEN_TEXT_MAX_CHARS = 2000;
@@ -34,7 +35,7 @@ export function OpenTextQuestion({
         maxLength={OPEN_TEXT_MAX_CHARS}
         onChange={(e) => onChange({ text: e.target.value })}
         placeholder={vi.respondent.openTextPlaceholder}
-        className="w-full border border-line bg-card px-3 py-2 text-base"
+        className={`${CONTROL} rounded-3xl border-edge`}
       />
     </QuestionFrame>
   );
